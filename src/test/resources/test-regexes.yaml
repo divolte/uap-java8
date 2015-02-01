@@ -1,0 +1,24 @@
+user_agent_parsers:
+  - regex: '(no_replacements) (\d+)\.(\d+)\.(\d+)'
+  - regex: '(all_replacements) (\d+)\.(\d+)\.(\d+)'
+    family_replacement: 'xx $1 xx'
+    v1_replacement: 'xx $2 xx'
+    v2_replacement: 'xx $3 xx $3'
+    v3_replacement: 'xx $4 xx $$ '
+  - regex: '(some_replacements) (\d+)\.(\d+)\.(\d+)'
+    family_replacement: 'xx $1 xx'
+    v1_replacement: 'xx $2 xx'
+  - regex: '(less_groups) (\d+)'
+    family_replacement: 'xx $1 xx'
+    v1_replacement: 'xx $2 xx'
+  - regex: '(bad_group_ref) (\d+)\.(\d+)'
+    family_replacement: 'xx $4 xx'
+
+os_parsers:
+  - regex: '(Mac OS X) (\d+)[_.](\d+)(?:[_.](\d+))?'
+
+device_parsers:
+  - regex: '(AppleTV)'
+    device_replacement: 'AppleTV'
+    brand_replacement: 'Apple'
+    model_replacement: '$1'

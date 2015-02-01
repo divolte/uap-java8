@@ -1,0 +1,11 @@
+user_agent_parsers:
+  - regex: '(Chromium|Chrome)/(\d+)\.(\d+)\.(\d+)'
+
+os_parsers:
+  - regex: '(Mac OS X) (\d+)[_.](\d+)(?:[_.](\d+))?'
+
+device_parsers:
+  - regex: '(AppleTV)'
+    device_replacement: 'AppleTV'
+    brand_replacement: 'Apple'
+    model_replacement: '$1'
