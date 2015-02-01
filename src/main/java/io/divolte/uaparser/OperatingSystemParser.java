@@ -89,7 +89,7 @@ public class OperatingSystemParser {
 
     private static OperatingSystemPattern prepareParser(Map<String,String> config) {
         final String regex = Optional.ofNullable(config.get("regex"))
-                                     .orElseThrow(() -> new Parser.InvalidParserDataException("Device parser data contains entry without regex key."));
+                                     .orElseThrow(() -> new Parser.InvalidParserDataException("Operating system parser data contains entry without regex key."));
         final Pattern pattern = Pattern.compile(regex);
         // Pattern does not expose the group count, so we must create a matcher
         final int groupCount = pattern.matcher("").groupCount();
