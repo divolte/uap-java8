@@ -77,7 +77,7 @@ public class DeviceParser {
 
     public List<Map<String,String>> getInvalidConfigurations() {
         if (!lenient) {
-            throw new Parser.InvalidParserDataException("Parser needs to be lenient in order to keep track of invalid configurations.");
+            throw new IllegalStateException("Parser needs to be lenient in order to keep track of invalid configurations.");
         }
         return invalidConfigs;
     }
