@@ -28,17 +28,39 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+import javax.annotation.concurrent.ThreadSafe;
+
 import org.yaml.snakeyaml.Yaml;
 
+/**
+ * Main parser implementation. Parser instances are stateless; after construction it is safe
+ * to use instances from multiple threads concurrently.
+ */
+@ParametersAreNonnullByDefault
+@ThreadSafe
 public class Parser {
     private final UserAgentParser userAgentParser;
     private final DeviceParser deviceParser;
     private final OperatingSystemParser operatingSystemParser;
 
+    /**
+     * Creates a Parser instance based on the the given data file as InputStream. This parser
+     * will not be lenient in presence of invalid configurations in the given data file.
+     * @param data InputStream that reads a parser data file in Yaml format.
+     */
     public Parser(final InputStream data) {
         this(data, false);
     }
 
+    /**
+     * Creates a Parser instance based on the the given data file as InputStream. This parser
+     * can be configured to be lenient in presence of invalid configurations in the given data file.
+     * In such cases, the invalid configurations are ignored. A lenient parser will not throw any
+     * exceptions in case of configuration errors.
+     * @param data InputStream that reads a parser data file in Yaml format.
+     * @param lenient When true, the parser instance will be lenient in presence of invalid configuration.
+     */
     public Parser(final InputStream data, final boolean lenient) {
         Yaml yaml = new Yaml();
         @SuppressWarnings("unchecked")

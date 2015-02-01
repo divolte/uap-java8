@@ -21,3 +21,6 @@ UserAgent agent = p.parseUserAgent(input);
 Device device = p.parseDevice(input);
 OperatingSystem os = p.parseOperatingSystem(input);
 ```
+
+## Dependency
+This library is currently not published in Maven Central, but likely will be soon.
