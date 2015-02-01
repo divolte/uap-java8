@@ -20,9 +20,8 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
-
-import com.sun.istack.internal.Nullable;
 
 @ParametersAreNonnullByDefault
 public class OperatingSystem {
